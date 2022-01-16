@@ -10,3 +10,6 @@ sc = ElPaisScrapper(urls=urls, verbose=True)
 sc.download_htmls()
 sc.extract_info()
 
+filepath_test = '/home/pablo/Documents/news-scrapper/news/test_elpais.json'
+sc.save_news(filepath_test)
+sc.load_news(filepath_test)

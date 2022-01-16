@@ -1,5 +1,8 @@
+import os.path
+
 from bs4 import BeautifulSoup
 import requests
+import json
 
 
 class Scrapper:
@@ -41,6 +44,20 @@ class Scrapper:
                 'author': self.extract_author(soup),
                 'body': self.extract_body(soup)
             }
+
+    def save_news(self, filename):
+        with open(filename, 'w') as fp:
+            json.dump(self.news_info, fp, indent=4)
+
+    def load_news(self, filename):
+        if os.path.exists(filename):
+            with open(filename, 'r') as fp:
+                self.news_info = json.load(fp)
+        elif self.verbose:
+            print(f'-' * 50)
+            print(f'{filename} doesn\'t exist!')
+            print(f'Nothing loaded')
+            print(f'-' * 50)
 
     @staticmethod
     def extract_title(soup):

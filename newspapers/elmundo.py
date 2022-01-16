@@ -24,7 +24,7 @@ class ElMundoScrapper(Scrapper):
     @staticmethod
     def extract_date(soup):
         date = soup.find('div', class_='ue-c-article__publishdate').time['datetime']
-        date = pd.to_datetime(date)
+        date = pd.to_datetime(date).strftime('%Y-%m-%d %H:%M:%S')
         return date
 
     @staticmethod

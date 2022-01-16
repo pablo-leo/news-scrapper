@@ -9,4 +9,6 @@ sc = ElMundoScrapper(urls=urls, verbose=True)
 sc.download_htmls()
 sc.extract_info()
 
-print('Finished!')
+filepath_test = '/home/pablo/Documents/news-scrapper/news/test_elmundo.json'
+sc.save_news(filepath_test)
+sc.load_news(filepath_test)

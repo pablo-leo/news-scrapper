@@ -29,7 +29,7 @@ class MarketWatchScrapper(Scrapper):
         date = soup.find('time', class_='timestamp timestamp--pub').text
         date = date.replace('\n', '').strip()
         date = date.split('Published: ')[-1]
-        date = pd.to_datetime(date)
+        date = pd.to_datetime(date).strftime('%Y-%m-%d %H:%M:%S')
         return date
 
     @staticmethod

@@ -10,4 +10,6 @@ sc = MarketWatchScrapper(urls=urls, verbose=True)
 sc.download_htmls()
 sc.extract_info()
 
-print('Holly smokes!')
+filepath_test = '/home/pablo/Documents/news-scrapper/news/test_marketwatch.json'
+sc.save_news(filepath_test)
+sc.load_news(filepath_test)

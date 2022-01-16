@@ -24,7 +24,7 @@ class ElPaisScrapper(Scrapper):
     @staticmethod
     def extract_date(soup):
         date = soup.find('div', class_='a_md_f').time.a['data-date']
-        date = pd.to_datetime(date)
+        date = pd.to_datetime(date).strftime('%Y-%m-%d %H:%M:%S')
         return date
 
     @staticmethod
