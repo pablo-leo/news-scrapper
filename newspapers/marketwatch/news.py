@@ -1,9 +1,9 @@
 import re
 import pandas as pd
-from scrapper import Scrapper
+from news_scrapper import NewsScrapper
 
 
-class MarketWatchScrapper(Scrapper):
+class MarketWatchNewsScrapper(NewsScrapper):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

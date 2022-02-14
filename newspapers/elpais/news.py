@@ -1,8 +1,8 @@
 import pandas as pd
-from scrapper import Scrapper
+from news_scrapper import NewsScrapper
 
 
-class ElPaisScrapper(Scrapper):
+class ElPaisNewsScrapper(NewsScrapper):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

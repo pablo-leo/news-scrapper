@@ -1,11 +1,10 @@
-import os.path
-
-from bs4 import BeautifulSoup
-import requests
 import json
+import os.path
+import requests
+from bs4 import BeautifulSoup
 
 
-class Scrapper:
+class NewsScrapper:
     def __init__(self, urls, verbose=False):
         self.urls = urls
         self.verbose = verbose
