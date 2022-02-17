@@ -23,12 +23,16 @@ class ElPaisNewsScrapper(NewsScrapper):
 
     @staticmethod
     def extract_date(soup):
-        date = soup.find('div', class_='a_md_f').time.a['data-date']
+        date = soup.find('time')
+        date = date['data-date'] if date.a is None else date.a['data-date']
         date = pd.to_datetime(date).strftime('%Y-%m-%d %H:%M:%S')
         return date
 
     @staticmethod
     def extract_body(soup):
-        body_paragraphs = soup.find('div', class_='a_c clearfix').find_all('p')
+        body_frame = soup.find('div', class_='a_c clearfix')
+        if body_frame is None:
+            body_frame = soup.find('div', class_='a_c clearfix a_lib')
+        body_paragraphs = body_frame.find_all('p')
         body = '\n'.join([body_p.text for body_p in body_paragraphs])
         return body
