@@ -8,7 +8,7 @@ class ElPaisUrlsScrapper(UrlsScrapper):
     NOT_INTERESTING_TOPICS = [
         'videos', 'opinion', 'noticias', 'eps', 'elcomidista', 'escaparate', 'babelia', 'ideas', 'elviajero', 'icon',
         'cultura', 'television', 'planeta-futuro', 'deportes', 'clima-y-medio-ambiente', 'ciencia', 'sociedad',
-        'espana/un-futuro-cercano', 'juegos', 'gente'
+        'espana/un-futuro-cercano', 'juegos', 'gente', 'economia/si-lo-hubiera-sabido', 'elpais'
     ]
 
     def __init__(self, **kwargs):

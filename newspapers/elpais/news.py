@@ -18,7 +18,8 @@ class ElPaisNewsScrapper(NewsScrapper):
 
     @staticmethod
     def extract_author(soup):
-        author = soup.find('div', class_='a_md_a').a.text
+        author = soup.find('div', class_='a_md_a')
+        author = author.span.text if author.a is None else author.a.text
         return author
 
     @staticmethod

@@ -1,3 +1,4 @@
+from datetime import date
 from newspapers.elmundo.urls import ElMundoUrlsScrapper
 from newspapers.elmundo.news import ElMundoNewsScrapper
 
@@ -10,6 +11,7 @@ sc = ElMundoNewsScrapper(urls=urls, verbose=True)
 sc.download_htmls()
 sc.extract_info()
 
-filepath_test = '/home/pablo/Documents/news-scrapper/newspapers/elmundo/news.json'
+today = date.today().strftime('%Y-%m-%d')
+filepath_test = f'/home/pablo/Documents/news-scrapper/newspapers/elmundo/news_{today}.json'
 sc.save_news(filepath_test)
 sc.load_news(filepath_test)
