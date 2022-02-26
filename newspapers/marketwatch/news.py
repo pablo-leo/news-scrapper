@@ -15,20 +15,33 @@ class MarketWatchNewsScrapper(NewsScrapper):
 
     @staticmethod
     def extract_subtitle(soup):
-        subtitle = soup.find('h2', class_='article__subhead').text
-        subtitle = subtitle.replace('\n', '').strip()
+        subtitle = soup.find('h2', class_='article__subhead')
+        if subtitle is not None:
+            subtitle = subtitle.text.replace('\n', '').strip()
         return subtitle
 
     @staticmethod
     def extract_author(soup):
-        author = soup.find('div', class_='byline article__byline').a.text
+        author = soup.find('div', class_='byline article__byline')
+        if author.a is not None:
+            author = author.a.text
+        elif author.text is not None:
+            author = author.text
+        elif author.find('h4').text is not None:
+            author = author.find('h4').text
         return author
 
     @staticmethod
     def extract_date(soup):
-        date = soup.find('time', class_='timestamp timestamp--pub').text
-        date = date.replace('\n', '').strip()
-        date = date.split('Published: ')[-1]
+        date = soup.find('time', class_='timestamp timestamp--pub')
+        if date is not None:
+            date = date.text
+            date = date.replace('\n', '').strip()
+            date = date.split('Published: ')[-1]
+        else:
+            date = soup.find('time', class_='timestamp timestamp--update').text
+            date = date.replace('\n', '').strip()
+            date = date.split('Updated: ')[-1]
         date = pd.to_datetime(date).strftime('%Y-%m-%d %H:%M:%S')
         return date
 
