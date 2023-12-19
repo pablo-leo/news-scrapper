@@ -1,6 +1,9 @@
+import os, sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from datetime import date
-from newspapers.marketwatch.news import MarketWatchNewsScrapper
-from newspapers.marketwatch.urls import MarketWatchUrlsScrapper
+from news_scrapper.marketwatch.news import MarketWatchNewsScrapper
+from news_scrapper.marketwatch.urls import MarketWatchUrlsScrapper
 
 
 main_url = 'https://www.marketwatch.com/'
@@ -11,7 +14,11 @@ sc = MarketWatchNewsScrapper(urls=urls, verbose=True)
 sc.download_htmls()
 sc.extract_info()
 
+folder_path = './news/marketwatch/'
+if not os.path.exists(folder_path):
+   os.makedirs(folder_path)
 today = date.today().strftime('%Y-%m-%d')
-filepath_test = f'/home/pablo/Documents/news-scrapper/newspapers/marketwatch/news_{today}.json'
-sc.save_news(filepath_test)
-sc.load_news(filepath_test)
+filepath = os.path.join(folder_path, f'news_{today}.json')
+
+sc.save_news(filepath)
+sc.load_news(filepath)

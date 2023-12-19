@@ -1,5 +1,5 @@
-import pandas as pd
-from news_scrapper import NewsScrapper
+from dateutil import parser
+from news_scrapper.news_scrapper import NewsScrapper
 
 
 class ElPaisNewsScrapper(NewsScrapper):
@@ -26,7 +26,7 @@ class ElPaisNewsScrapper(NewsScrapper):
     def extract_date(soup):
         date = soup.find('time')
         date = date['data-date'] if date.a is None else date.a['data-date']
-        date = pd.to_datetime(date).strftime('%Y-%m-%d %H:%M:%S')
+        date = parser.parse(date).strftime('%Y-%m-%d %H:%M:%S')
         return date
 
     @staticmethod

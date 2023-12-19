@@ -1,6 +1,6 @@
 import re
-import pandas as pd
-from news_scrapper import NewsScrapper
+from dateutil import parser
+from news_scrapper.news_scrapper import NewsScrapper
 
 
 class MarketWatchNewsScrapper(NewsScrapper):
@@ -42,7 +42,7 @@ class MarketWatchNewsScrapper(NewsScrapper):
             date = soup.find('time', class_='timestamp timestamp--update').text
             date = date.replace('\n', '').strip()
             date = date.split('Updated: ')[-1]
-        date = pd.to_datetime(date).strftime('%Y-%m-%d %H:%M:%S')
+        date = parser.parse(date).strftime('%Y-%m-%d %H:%M:%S')
         return date
 
     @staticmethod

@@ -1,5 +1,5 @@
-import pandas as pd
-from urls_scrapper import UrlsScrapper
+from dateutil import parser
+from news_scrapper.urls_scrapper import UrlsScrapper
 
 
 class ElPaisUrlsScrapper(UrlsScrapper):
@@ -32,7 +32,7 @@ class ElPaisUrlsScrapper(UrlsScrapper):
         for url in root_filtered_urls:
             topic, subtopic = url.replace(main_url, '').split('/')[:2]
             try:
-                pd.to_datetime(subtopic)
+                parser.parse(subtopic)
             except:
                 topic = f'{topic}/{subtopic}'
 

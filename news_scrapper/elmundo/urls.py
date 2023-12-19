@@ -1,11 +1,12 @@
-from urls_scrapper import UrlsScrapper
+from news_scrapper.urls_scrapper import UrlsScrapper
 
 
 class ElMundoUrlsScrapper(UrlsScrapper):
 
     NOT_INTERESTING_TOPICS = [
         'ofertas-regalos', 'cultura', 'album', 'metropoli', 'podcasts', 'vida-sana', 'papel', 'blogs', 'opinion',
-        'eventos'
+        'eventos', 
+        # 'uestudio', 'deportes', 'loc'
     ]
 
     def __init__(self, **kwargs):

@@ -133,3 +133,6 @@ dmypy.json
 
 # JSON news
 news_*.json
+
+# news folders
+news/*

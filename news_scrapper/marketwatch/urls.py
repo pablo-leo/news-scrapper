@@ -1,5 +1,4 @@
-import pandas as pd
-from urls_scrapper import UrlsScrapper
+from news_scrapper.urls_scrapper import UrlsScrapper
 
 
 class MarketWatchUrlsScrapper(UrlsScrapper):
