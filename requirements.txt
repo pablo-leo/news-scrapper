@@ -1,1 +1,4 @@
 beautifulsoup4==4.*
+lxml==4.*
+python-dateutil==2.*
+requests==2.*
